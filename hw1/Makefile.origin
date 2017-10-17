@@ -5,13 +5,13 @@ CXX=`$(LLVM_CONFIG) --bindir`/clang
 CXXFLAGS=`$(LLVM_CONFIG) --cppflags` -std=gnu++11 -fPIC -fno-rtti -g
 LDFLAGS=`$(LLVM_CONFIG) --ldflags`
 
-all: LLVMKYPass.so
+all: LLVMDemo.so
 
-LLVMKYPass.so: KYPass.o
-	$(CXX) -shared KYPass.o -o KYPass.so  -fPIC
+LLVMDemo.so: Demo.o
+	$(CXX) -shared Demo.o -o LLVMDemo.so  -fPIC
 
-KYPass.o: KYPass.cpp
-	$(CXX) -c KYPass.cpp -o KYPass.o $(CXXFLAGS)
+Demo.o: Demo.cpp
+	$(CXX) -c Demo.cpp -o Demo.o $(CXXFLAGS)
 
 clean:
 	rm -f *.o *.so

@@ -5,23 +5,22 @@
 #include "llvm/Analysis/LoopPass.h"
 #include "llvm/ADT/Statistic.h"
 
+
 using namespace llvm;
 
 namespace {
-	struct KYPass: public ModulePass{
+  struct KYPass: public ModulePass{
 		static char ID; //Pass ID.
 		KYPass() : ModulePass(ID) {}
 
 		int originModuleSize;
 		
 		virtual bool runOnModule(Module &M) {
-		
+			errs() << "Hello World!!! ";
 			return false;
 		}
-
-	};
+  };
 };
 
 char KYPass::ID = 0;
-
 static RegisterPass<KYPass> GS("KYPass","Simple demo");
