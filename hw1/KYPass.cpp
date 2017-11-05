@@ -16,7 +16,23 @@ namespace {
 		int originModuleSize;
 		
 		virtual bool runOnModule(Module &M) {
-			errs() << "Hello World!!! ";
+			errs() << "start runOnModule";
+			
+			for (Module:: iterator F = M.begin(); F!= M.end(); F++) {
+				for (Function::iterator BB = (*F).begin(); BB != (*F).end(); BB++) {
+					for (BasicBlock::iterator itrIns = (*BB).begin(); itrIns != (*BB).end(); itrIns++) {
+						if(Instruction *ins = dyn_cast<Instruction>(itrIns)) {
+							errs() << "\n \n got opcode ";
+							errs() << (*ins).getOpcodeName();
+						}							
+					}
+				}	
+			
+			
+			}
+
+			
+				
 			return false;
 		}
   };
